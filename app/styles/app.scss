@@ -1,0 +1,145 @@
+@import 'bootstrap';
+
+/*--------------------*/
+/* Custom Properties  */
+/*--------------------*/
+
+:root {
+  /* colors */
+  --clr-primary: 180 29% 50%;
+  --clr-light: 180 52% 96%;
+  --clr-light-accent: 180 31% 95%;
+  --clr-gray: 180 8% 52%;
+  --clr-dark-gray: 180 14% 20%;
+
+  /* font-sizes */
+  --fs-600: 1rem;
+  --fs-400: 0.87rem;
+  --fs-200: 0.87rem;
+  --fs-100: 0.74rem;
+
+  @media (min-width: 768px) {
+    /* font-sizes */
+    --fs-600: 1.2rem;
+    --fs-400: 1rem;
+    --fs-200: 0.933rem;
+  }
+}
+
+/*--------------------*/
+/* Reset              */
+/*--------------------*/
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+}
+
+/* set up the body */
+body {
+  font-family: 'Spartan', sans-serif;
+  font-size: 15px;
+  color: hsl(var(--clr-dark-gray));
+  background-color: hsl(var(--clr-light));
+  line-height: 1.5;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-rows: min-content 1fr;
+
+  overflow-x: hidden;
+}
+
+/* make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+h1 {
+  font-size: var(--fs-600);
+}
+
+header {
+  height: 156px;
+  background-color: hsl(var(--clr-primary));
+  background-image: url('./images/bg-header-mobile.svg');
+  margin-bottom: 50px;
+}
+
+.job-listing {
+  background-color: #ffffff;
+  padding: 0 1.33rem 1.33rem;
+  margin-bottom: 2.5rem;
+  border-radius: 4px;
+  box-shadow: 4px 4px 5px hsl(var(--clr-dark-gray) / 0.3);
+}
+
+.company-logo {
+  width: 48px;
+  transform: translateY(-24px);
+}
+
+.job-details > p {
+  font-size: var(--fs-200);
+  font-weight: 700;
+  margin: 0.25rem;
+}
+
+.job-details span {
+  font-size: var(--fs-100);
+  font-weight: 700;
+  color: #ffffff;
+  background-color: slateblue;
+  border-radius: 16px;
+  padding: 0.5rem;
+}
+
+.job-meta li {
+  display: inline;
+}
