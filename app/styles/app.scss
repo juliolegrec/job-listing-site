@@ -110,7 +110,17 @@ header {
   background-color: hsl(var(--clr-primary));
   background-image: url('./images/bg-header-mobile.svg');
   margin-bottom: 50px;
+
+  @media (min-width: 375px) {
+    background-image: url('./images/bg-header-desktop.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
+
+/*--------------------*/
+/* Component          */
+/*--------------------*/
 
 .job-listing {
   background-color: #ffffff;
@@ -120,26 +130,68 @@ header {
   box-shadow: 4px 4px 5px hsl(var(--clr-dark-gray) / 0.3);
 }
 
+.job-listing--new {
+  border-left: 4px solid hsl(var(--clr-primary));
+}
+
 .company-logo {
   width: 48px;
   transform: translateY(-24px);
 }
 
-.job-details > p {
+.company-name {
   font-size: var(--fs-200);
   font-weight: 700;
-  margin: 0.25rem;
+  color: hsl(var(--clr-primary));
 }
 
 .job-details span {
   font-size: var(--fs-100);
   font-weight: 700;
   color: #ffffff;
-  background-color: slateblue;
   border-radius: 16px;
-  padding: 0.5rem;
+  padding: 0.45rem 0.5rem 0.35rem;
 }
 
-.job-meta li {
-  display: inline;
+.new-tag {
+  background-color: hsl(var(--clr-primary));
+}
+
+.featured-tag {
+  background-color: hsl(var(--clr-dark-gray));
+}
+
+.job-details h1 {
+  margin-block: 1rem;
+}
+
+.job-meta {
+  font-size: var(--fs-200);
+  font-weight: 500;
+  color: hsl(var(--clr-gray));
+  margin-bottom: 1rem;
+}
+
+hr {
+  color: hsl(var(--clr-dark-gray));
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.job-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.job-tags button {
+  background-color: hsl(var(--clr-light-accent));
+  color: hsl(var(--clr-primary));
+  font-size: var(--fs-200);
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  border-radius: 4px;
 }
