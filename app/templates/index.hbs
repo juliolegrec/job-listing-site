@@ -1,64 +1,8 @@
-<header></header>
+<header>
+  <div class='container-xl'>
+    <div class='filter-bar'></div>
+  </div>
+</header>
 <main class='container-xl'>
-  <div class='job-listing job-listing--featured'>
-    <div class='job-details'>
-      <div class='company-logo'>
-        <img src='./assets/images/photosnap.svg' alt='' />
-      </div>
-      <div class='company-info'>
-        <p>Photosnap &nbsp;&nbsp;
-          <span class='new-pill'>NEW!</span>
-          <span class='featured-pill'>FEATURED</span>
-        </p>
-      </div>
-      <div class='job-info'>
-        <h1>Senior Frontend Developer</h1>
-        <p>
-          1d ago
-          <span>&#8226;</span>
-          Full Time
-          <span>&#8226;</span>
-          USA only
-        </p>
-      </div>
-    </div>
-    <hr />
-    <div class='job-tags'>
-      <button>Frontend</button>
-      <button>Senior</button>
-      <button>HTML</button>
-      <button>CSS</button>
-      <button>JavaScript</button>
-    </div>
-  </div>
-  <div class='job-listing'>
-    <div class='job-details'>
-      <div class='company-logo'>
-        <img src='./assets/images/manage.svg' alt='' />
-      </div>
-      <div class='company-info'>
-        <p>Manage &nbsp;&nbsp;
-          <span class='new-pill'>NEW!</span>
-        </p>
-      </div>
-      <div class='job-info'>
-        <h1>
-          Fullstack Developer</h1>
-        <p>
-          1d ago
-          <span>&#8226;</span>
-          Part Time
-          <span>&#8226;</span>
-          Remote
-        </p>
-      </div>
-    </div>
-    <hr />
-    <div class='job-tags'>
-      <button>Fullstack</button>
-      <button>Midweight</button>
-      <button>Python</button>
-      <button>React</button>
-    </div>
-  </div>
+  <Listing @model={{@model}} />
 </main>

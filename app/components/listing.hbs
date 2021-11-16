@@ -1,0 +1,41 @@
+{{#each @model as |listing|}}
+  <div class='job-listing {{if listing.featured 'job-listing--featured'}}'>
+    <div class='job-details'>
+      <div class='company-logo'>
+        <img src={{listing.logo}} alt="{{listing.company}}'s Logo" />
+      </div>
+      <div class='company-info'>
+        <p>{{listing.company}}
+          &nbsp;&nbsp;
+          {{#if listing.new}}
+            <span class='new-pill'>NEW!</span>
+          {{/if}}
+          {{#if listing.featured}}
+            <span class='featured-pill'>FEATURED</span>
+          {{/if}}
+        </p>
+      </div>
+      <div class='job-info'>
+        <h1>{{listing.position}}</h1>
+        <p>
+          {{listing.postedAt}}
+          <span>&#8226;</span>
+          {{listing.contract}}
+          <span>&#8226;</span>
+          {{listing.location}}
+        </p>
+      </div>
+    </div>
+    <hr />
+    <div class='job-tags'>
+      <button type='button'>{{listing.role}}</button>
+      <button type='button'>{{listing.level}}</button>
+      {{#each listing.languages as |language|}}
+        <button type='button'>{{language}}</button>
+      {{/each}}
+      {{#each listing.tools as |tool|}}
+        <button type='button'>{{tool}}</button>
+      {{/each}}
+    </div>
+  </div>
+{{/each}}

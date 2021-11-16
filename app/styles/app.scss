@@ -18,7 +18,7 @@
   --fs-200: 0.87rem;
   --fs-100: 0.74rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 960px) {
     /* font-sizes */
     --fs-600: 1.2rem;
     --fs-400: 1rem;
@@ -108,11 +108,12 @@ h1 {
 header {
   height: 156px;
   background-color: hsl(var(--clr-primary));
-  background-image: url('./images/bg-header-mobile.svg');
+  background-image: url('../images/bg-header-mobile.svg');
   margin-bottom: 50px;
+  position: relative;
 
   @media (min-width: 375px) {
-    background-image: url('./images/bg-header-desktop.svg');
+    background-image: url('../images/bg-header-desktop.svg');
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -121,7 +122,7 @@ header {
 hr {
   color: hsl(var(--clr-gray));
 
-  @media (min-width: 768px) {
+  @media (min-width: 960px) {
     display: none;
   }
 }
@@ -130,6 +131,14 @@ hr {
 /* Component          */
 /*--------------------*/
 
+.filter-bar {
+  width: 100%;
+  height: 71px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 4px 4px 5px hsl(var(--clr-dark-gray) / 0.1);
+}
+
 .job-listing {
   background-color: #ffffff;
   border-radius: 4px;
@@ -137,7 +146,7 @@ hr {
   margin-bottom: 2.67rem;
   box-shadow: 4px 4px 4px hsl(var(--clr-dark-gray) / 0.1);
 
-  @media (min-width: 768px) {
+  @media (min-width: 960px) {
     display: grid;
     grid-template-columns: auto auto;
     align-items: center;
@@ -150,7 +159,7 @@ hr {
 }
 
 .job-details {
-  @media (min-width: 768px) {
+  @media (min-width: 576px) {
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 20px;
@@ -160,7 +169,7 @@ hr {
 .company-logo {
   position: relative;
 
-  @media (min-width: 768px) {
+  @media (min-width: 576px) {
     grid-row: 1 / 3;
   }
 }
@@ -168,9 +177,9 @@ hr {
 .company-logo img {
   width: 48px;
   position: absolute;
-  top: -48px;
+  top: -60px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 576px) {
     position: static;
     width: 100%;
     height: 100%;
@@ -201,7 +210,7 @@ hr {
 }
 
 .job-info {
-  @media (min-width: 768px) {
+  @media (min-width: 960px) {
     grid-column-start: 2;
   }
 }
@@ -209,6 +218,11 @@ hr {
 .job-info h1 {
   font-size: var(--fs-600);
   margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.job-info h1:hover {
+  color: hsl(var(--clr-primary));
 }
 
 .job-info p {
@@ -219,7 +233,7 @@ hr {
 .job-info p span {
   margin-inline: 0.3rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 960px) {
     margin-inline: 1rem;
   }
 }
@@ -239,4 +253,11 @@ hr {
   padding: 0.5rem 0.35rem 0.3rem;
   font-size: var(--fs-400);
   font-weight: 700;
+  cursor: pointer;
+  transition: all 100ms linear;
+}
+
+.job-tags button:hover {
+  background-color: hsl(var(--clr-primary));
+  color: #ffffff;
 }
