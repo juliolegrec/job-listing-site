@@ -1,10 +1,10 @@
-{{#each @model as |listing|}}
+{{#each this.filterListings as |listing|}}
   <div class='job-listing {{if listing.featured 'job-listing--featured'}}'>
     <div class='job-details'>
       <div class='company-logo'>
         <img src={{listing.logo}} alt="{{listing.company}}'s Logo" />
       </div>
-      <div {{did-insert this.testModel}} class='company-info'>
+      <div class='company-info'>
         <p>{{listing.company}}
           &nbsp;&nbsp;
           {{#if listing.new}}
@@ -28,13 +28,29 @@
     </div>
     <hr />
     <div class='job-tags'>
-      <button type='button'>{{listing.role}}</button>
-      <button type='button'>{{listing.level}}</button>
-      {{#each listing.languages as |language|}}
-        <button type='button'>{{language}}</button>
+      <button
+        data-type='role'
+        type='button'
+        {{on 'click' this.changeFilter}}
+      >{{listing.role}}</button>
+      <button
+        data-type='level'
+        type='button'
+        {{on 'click' this.changeFilter}}
+      >{{listing.level}}</button>
+      {{#each listing.languages as |language index|}}
+        <button
+          data-type='language'
+          type='button'
+          {{on 'click' this.changeFilter}}
+        >{{language}}</button>
       {{/each}}
       {{#each listing.tools as |tool|}}
-        <button type='button'>{{tool}}</button>
+        <button
+          data-type='tool'
+          type='button'
+          {{on 'click' this.changeFilter}}
+        >{{tool}}</button>
       {{/each}}
     </div>
   </div>
