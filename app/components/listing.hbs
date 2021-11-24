@@ -1,3 +1,30 @@
+<div class='filter-bar'>
+  <div class='filter-tag-container'>
+    <div class='filter-tag'>
+      <div class='filter-text'>
+        <p>Frontend</p>
+      </div>
+      <button class='filter-remove'>
+        <img src='./images/icon-remove.svg' alt='' />
+      </button>
+    </div>
+    <div class='filter-tag'>
+      <div class='filter-text'>
+        <p>Frontend</p>
+      </div>
+      <button class='filter-remove'>
+        <img src='./images/icon-remove.svg' alt='' />
+      </button>
+    </div>
+
+  </div>
+  <button
+    class='filter-clear-btn'
+    type='button'
+    {{on 'click' this.clearFilter}}
+  >Clear</button>
+</div>
+
 {{#each this.filterListings as |listing|}}
   <div class='job-listing {{if listing.featured 'job-listing--featured'}}'>
     <div class='job-details'>

@@ -69,9 +69,6 @@ body {
   line-height: 1.5;
   min-height: 100vh;
 
-  display: grid;
-  grid-template-rows: min-content 1fr;
-
   overflow-x: hidden;
 }
 
@@ -135,39 +132,6 @@ hr {
 /*--------------------*/
 /* Component          */
 /*--------------------*/
-
-.filter-bar {
-  width: 80%;
-  height: clamp(50px, 16vw, 71px);
-  margin: 0 auto;
-  padding-inline: 1.5rem;
-  background-color: salmon;
-  border-radius: 8px;
-  box-shadow: 4px 4px 5px hsl(var(--clr-dark-gray) / 0.1);
-  align-self: flex-end;
-  transform: translateY(50%);
-
-  display: flex;
-  justify-content: space-between;
-}
-
-.filter-tag {
-  background-color: hsl(var(--clr-light-accent));
-  padding: 0.35rem 0.45rem 0;
-  border-radius: 4px;
-  font-size: var(--fs-200);
-  font-weight: 700;
-  color: hsl(var(--clr-primary));
-}
-
-.filter-tag span {
-  background-color: hsl(var(--clr-dark-gray));
-}
-
-.filter-tag img {
-  background-color: hsl(var(--clr-dark-gray));
-  vertical-align: baseline;
-}
 
 .job-listing {
   background-color: #ffffff;

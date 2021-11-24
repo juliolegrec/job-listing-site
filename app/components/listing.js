@@ -5,20 +5,19 @@ import { action } from '@ember/object';
 export default class ListingComponent extends Component {
   @tracked listings = this.args.model;
 
-  @tracked filters = {
-    role: '',
-    level: '',
-    language: '',
-    tool: '',
-  };
+  @tracked role = '';
+  @tracked level;
+  @tracked language;
+  @tracked tool;
 
   get filterListings() {
-    const filteredListings = this.listings;
-
     if (this.role) {
-      return filteredListings.filter((listing) => listing.role === this.role);
-    } else {
+      const filteredListings = this.listings.filter((listing) => {
+        return listing.role === this.role;
+      });
       return filteredListings;
+    } else {
+      return this.listings;
     }
   }
 
@@ -27,8 +26,13 @@ export default class ListingComponent extends Component {
     let filterType = event.srcElement.dataset.type;
     let filterParam = event.srcElement.innerText;
 
-    this.filters[filterType] = filterParam;
-    console.log(this.filters);
+    if (filterType === 'role') {
+      this.role = filterParam;
+    }
+
+    console.log(this.role);
+
+    // this.filters[filterType] = filterParam;
   }
 
   @action
