@@ -5,38 +5,41 @@ import { action } from '@ember/object';
 export default class ListingComponent extends Component {
   @tracked listings = this.args.model;
 
-  @tracked role = '';
-  @tracked level;
-  @tracked language;
-  @tracked tool;
+  @tracked filters = {
+    role: ['Frontend', 'Fullstack', 'Backend'],
+    level: ['Senior', 'Junior', 'Midweight'],
+  };
 
   get filterListings() {
-    if (this.role) {
-      const filteredListings = this.listings.filter((listing) => {
-        return listing.role === this.role;
-      });
-      return filteredListings;
-    } else {
-      return this.listings;
-    }
+    const filteredListings = this.listings.filter((listing) => {
+      // this.filters.role.forEach((el) => console.log(el));
+      // console.log(listing.role);
+      this.filters.role.forEach((el) => el === listing.role);
+    });
+    return filteredListings;
   }
 
   @action
   changeFilter(event) {
     let filterType = event.srcElement.dataset.type;
-    let filterParam = event.srcElement.innerText;
+    let filterValue = event.srcElement.innerText;
 
-    if (filterType === 'role') {
-      this.role = filterParam;
-    }
+    // if (this.filters[filterType].find((el) => el === filterValue)) {
+    //   return;
+    // }
+    // this.filters[filterType].push(filterValue);
 
-    console.log(this.role);
-
-    // this.filters[filterType] = filterParam;
+    this.filters[filterType] = filterValue;
+    console.table(this.filters);
   }
 
   @action
   clearFilter() {
-    this.role = '';
+    this.filters = {
+      role: [],
+      level: [],
+      language: [],
+      tool: [],
+    };
   }
 }
