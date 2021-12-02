@@ -1,22 +1,26 @@
-<div class='shadow-sm filter-bar'>
-  <div class='filter-tag-container'>
-    <div class='filter-tag'>
-      <div class='filter-text'>
-        <p>Frontend</p>
-      </div>
-      <button class='filter-remove'>
-        <img src='./images/icon-remove.svg' alt='' />
-      </button>
+{{#if this.isFiltered}}
+  <div class='shadow-sm filter-bar'>
+    <div class='filter-tag-container'>
+      {{#each this.filterTags as |filterTag|}}
+        <div class='filter-tag'>
+          <div class='filter-text'>
+            <p>{{filterTag}}</p>
+          </div>
+          <button class='filter-remove'>
+            <img src='./images/icon-remove.svg' alt='' />
+          </button>
+        </div>
+      {{/each}}
     </div>
+    <button
+      class='filter-clear-btn'
+      type='button'
+      {{on 'click' this.clearFilter}}
+    >Clear</button>
   </div>
-  <button
-    class='filter-clear-btn'
-    type='button'
-    {{on 'click' this.clearFilter}}
-  >Clear</button>
-</div>
+{{/if}}
 
-{{#each this.filterListings as |listing|}}
+{{#each this.filteredListings as |listing|}}
   <div class='job-listing {{if listing.featured 'job-listing--featured'}}'>
     <div class='job-details'>
       <div class='company-logo'>
