@@ -6,8 +6,8 @@ export default class ListingComponent extends Component {
   @tracked isFiltered = false;
   @tracked listings = this.args.model;
   @tracked filters = {
-    role: [],
-    level: [],
+    role: '',
+    level: '',
     language: [],
     tool: [],
   };
@@ -15,56 +15,82 @@ export default class ListingComponent extends Component {
 
   get filteredListings() {
     if (this.isFiltered) {
-      // filter the listings based on filters
-
-      return this.listings.filter((listing) => {
-        for (let filter of this.filters.role) {
-          return listing.role === filter;
-        }
-      });
+      return this.listings
+        .filter((listing) => {
+          if (this.filters.role === '') {
+            return true;
+          }
+          return listing.role === this.filters.role;
+        })
+        .filter((listing) => {
+          if (this.filters.level === '') {
+            return true;
+          }
+          return listing.level === this.filters.level;
+        })
+        .filter((listing) => {
+          if (this.filters.language.length === 0) {
+            return true;
+          }
+          return listing.languages.some((item) => {
+            for (const value of this.filters.language) {
+              return item === value;
+            }
+          });
+        })
+        .filter((listing) => {
+          if (this.filters.tool.length === 0) {
+            return true;
+          }
+          return listing.tools.some((item) => {
+            for (const value of this.filters.tool) {
+              return item === value;
+            }
+          });
+        });
     } else {
       return this.listings;
     }
   }
 
-  changeFilter = (event) => {
+  @action
+  changeFilter(event) {
     this.isFiltered = true;
 
     let filterType = event.srcElement.dataset.type;
     let filterValue = event.srcElement.innerText;
 
-    if (this.filters[filterType].find((el) => el === filterValue)) {
-      return;
-    } else {
-      this.filters[filterType].push(filterValue);
-    }
-  };
-
-  get filterTags() {
-    for (const [key, value] of Object.entries(this.filters)) {
-      if (value.length === 0) {
+    if (filterType === 'language' || filterType === 'tool') {
+      if (this.filters[filterType].find((el) => el === filterValue)) {
         return;
       } else {
-        this.filterTags.push(value);
+        this.filters[filterType].push(filterValue);
       }
-      // console.log(`
-      // Key: ${key}
-      // Value: ${value}
-      // `);
+    } else {
+      this.filters[filterType] = filterValue;
     }
 
-    console.log(this.filterTags);
-
-    return this.filterTags;
+    this.filterTags = [...this.filterTags, filterValue];
   }
 
-  clearFilter = () => {
+  @action
+  removeTag(index) {
+    this.filterTags.splice(index, 1);
+    if (this.filterTags.length === 0) {
+      this.clearFilter();
+    }
+    this.filterTags = this.filterTags;
+  }
+
+  @action
+  clearFilter() {
     this.isFiltered = false;
     this.filters = {
-      role: [],
-      level: [],
+      role: '',
+      level: '',
       language: [],
       tool: [],
     };
-  };
+    this.filterTags = [];
+  }
 }

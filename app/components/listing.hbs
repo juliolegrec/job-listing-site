@@ -1,14 +1,17 @@
 {{#if this.isFiltered}}
   <div class='shadow-sm filter-bar'>
     <div class='filter-tag-container'>
-      {{#each this.filterTags as |filterTag|}}
+      {{#each this.filterTags as |filterTag index|}}
         <div class='filter-tag'>
           <div class='filter-text'>
             <p>{{filterTag}}</p>
           </div>
-          <button class='filter-remove'>
+          {{!-- <button
+            class='filter-remove'
+            {{on 'click' (fn this.removeTag index)}}
+          >
             <img src='./images/icon-remove.svg' alt='' />
-          </button>
+          </button> --}}
         </div>
       {{/each}}
     </div>
